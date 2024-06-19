@@ -3,6 +3,7 @@ package redcon
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"strings"
 	"sync"
