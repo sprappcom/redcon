@@ -1,4 +1,4 @@
-module github.com/tidwall/redcon
+module github.com/sprappcom/redcon
 
 go 1.15
 
