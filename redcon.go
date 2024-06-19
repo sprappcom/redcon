@@ -18,6 +18,26 @@ import (
 
 type Action int
 
+var (
+	errUnbalancedQuotes       = &errProtocol{"unbalanced quotes in request"}
+	errInvalidBulkLength      = &errProtocol{"invalid bulk length"}
+	errInvalidMultiBulkLength = &errProtocol{"invalid multibulk length"}
+	errDetached               = errors.New("detached")
+	errIncompleteCommand      = errors.New("incomplete command")
+	errTooMuchData            = errors.New("too much data")
+)
+
+const maxBufferCap = 262144
+
+type errProtocol struct {
+	msg string
+}
+
+func (err *errProtocol) Error() string {
+	return "Protocol error: " + err.msg
+}
+
+
 const (
 	None Action = iota
 	Close
